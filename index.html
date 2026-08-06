@@ -72,6 +72,16 @@
         radial-gradient(760px 560px at 50% 92%, rgba(0,180,255,0.10), transparent 62%),
         var(--bg);
     }
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: url("assets/victoria_harbour_bg.jpg") center/cover no-repeat;
+      opacity: 0.14;
+      filter: saturate(0.95) contrast(1.05);
+      pointer-events: none;
+      z-index: -1;
+    }
 
     a{ color: inherit; }
     a:hover{ color: var(--accent); }
@@ -482,17 +492,39 @@
       overflow: hidden;
       border-radius: 16px;
       border: 1px solid rgba(234,240,255,0.14);
-      min-height: 280px;
-      background: rgba(255,255,255,0.03);
+      min-height: 420px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(255,255,255,0.03);
+      padding: 0;
     }
     .feature-image img{
       display: block;
       width: 100%;
-      height: 100%;
-      min-height: 280px;
+      height: 420px;
+      min-height: 420px;
       object-fit: cover;
+      object-position: center 72%;
       filter: brightness(1.06) saturate(0.92) contrast(0.94);
-      transform: scale(1.01);
+      transform: scale(1.12) translateX(0);
+      transform-origin: center center;
+      max-height: none;
+      margin: 0 auto;
+      animation: harbourPan 18s ease-in-out infinite alternate;
+    }
+    @keyframes harbourPan{
+      0%{
+        transform: scale(1.12) translateX(-7%);
+      }
+      100%{
+        transform: scale(1.12) translateX(7%);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .feature-image img{
+        animation: none;
+        transform: scale(1.12) translateX(0);
+      }
     }
     .feature-image::after{
       content: "";
@@ -558,8 +590,8 @@
           <a href="#links"><span>我的連結</span><span class="tag">links</span></a>
           <a href="#contact"><span>聯絡方式</span><span class="tag">contact</span></a>
           <a href="#daily-news"><span>每日新聞</span><span class="tag">news</span></a>
-          <a href="#monthly"><span>每月成交</span><span class="tag">monthly</span></a>
-          <a href="#ads"><span>左側廣告</span><span class="tag">ads</span></a>
+          <a href="#monthly"><span>每月成交</span><span class="tag">monthly txn</span></a>
+          <a href="#ads"><span>廣告連結</span><span class="tag">ads</span></a>
         </div>
 
         <div class="meta">
@@ -576,8 +608,8 @@
             <a class="btn mini" href="#links">Open Links</a>
           </div>
           <div style="margin-top:10px; display:grid; gap:8px;">
-            <div class="chip"><span class="dot"></span><span>WhatsApp: +852 90906511</span></div>
-            <div class="chip"><span class="dot"></span><span>propertyarigatou@outlook.com</span></div>
+            <a class="btn mini primary" href="https://wa.me/85290906511?text= 你好我想查詢地產一站式服務謝謝" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn mini" href="mailto:propertyarigatou@outlook.com?subject=地產查詢你好我想查詢謝謝">Email</a>
           </div>
         </div>
       </aside>
@@ -585,18 +617,18 @@
       <main class="panel main">
         <section class="hero">
           <h1>
-            <span data-lang="zh">有我在</span>
-            <span data-lang="en" style="display:none;">iamhereyourehere</span>
-            <span data-lang="th" style="display:none;">iamhereyourehere</span>
+            <span data-lang="zh">有我在 你的好拍檔</span>
+            <span data-lang="en" style="display:none;">iamhereyourehere your right-hand man</span>
+            <span data-lang="th" style="display:none;">iamhereyourehere คู่หูที่ดีของคุณ</span>
           </h1>
           <p class="sub" data-lang="zh">
-            科技感的個人頁面：放你的地產平台、社交媒體、以及你想展示的任何連結。
+            幫你找到適合生活的空間 
           </p>
           <p class="sub" data-lang="en" style="display:none;">
-            A tech-style personal page to host your real estate profiles, social links, and everything you want to share.
+            Helping you find a suitable dream space
           </p>
           <p class="sub" data-lang="th" style="display:none;">
-            หน้าเว็บไซต์สไตล์เทคสำหรับรวมโปรไฟล์อสังหาฯ โซเชียลมีเดีย และลิงก์สำคัญทั้งหมดของคุณไว้ในที่เดียว
+            ยินดีต้อนรับสู่หน้าเพจของฉัน
           </p>
         </section>
 
@@ -629,24 +661,26 @@
             <p data-lang="zh">
               如果你正在找房，無論是自住還是投資，我們可以聊聊。
             </p>
-
-            <div class="service-box" data-lang="zh">
-              <h3>一站式服務（香港／九龍區）</h3>
-              <ul>
-                <li>清潔服務</li>
-                <li>家居翻新</li>
-                <li>大小維修</li>
-                <li>開鎖換鎖</li>
-                <li>疑難排解</li>
-                <li>7人專車接送（港／九／新界／大灣區）</li>
-              </ul>
-              <div class="fine">
-                需要幫手安排以上服務，都可以直接聯絡我：我可以一站式跟進。
-              </div>
-              <div class="fine">
-                另設轉介：會所會藉買賣、遊艇買賣、馬匹買賣及保險等高端市場（歡迎私訊查詢）。
-              </div>
-            </div>
+<div class="service-box" data-lang="zh">
+  <h3>一站式服務（香港／九龍區）</h3>
+  <ul>
+    <li>清潔服務</li>
+    <li>滅蟲服務</li>
+    <li>家居翻新</li>
+    <li>大小維修</li>
+    <li>開鎖換鎖</li>
+    <li>疑難排解</li>
+    <li>7人專車接送（港／九／新界／大灣區）</li>
+  </ul>
+  <div class="fine">
+    需要幫手安排以上服務，都可以直接聯絡我：我可以一站式跟進。
+  </div>
+  <div class="fine">
+    另設轉介：會所會藉買賣、遊艇買賣、馬匹買賣及保險等高端市場（歡迎私訊查詢）。
+  </div>
+</div>
+            
+        
 
             <div data-lang="th" style="display:none;">
               <p>
@@ -697,35 +731,33 @@
               <p class="english-label">English</p>
               <p>
                 Hello, I’m Ryan.<br />
-                I’m a Hong Kong real estate agent who believes that space shapes the way we live.
+                As a Hong Kong real estate agent, I believe space deeply shapes how we live, work, and thrive.
               </p>
               <p>
-                I help clients find the right space for living or investment in Hong Kong, the Greater Bay Area, Chiang Mai, and beyond.
-                To me, a property is not only about size and price, but also about its surroundings, energy, and future potential.
+                I help clients find exceptional properties for personal living and investment across Hong Kong, the Greater Bay Area, Chiang Mai, and beyond.
+                To me, a property is more than its layout or price tag. Beyond floor plans and location, I pay close attention to natural light, airflow, 
+                exterior views, and the overall energy a space projects.
+                These subtle details create the daily atmosphere and long-term stability every home needs.
               </p>
               <p>
-                I view homes a little differently. Beyond location, floor level, and price,
-                I also pay attention to light, airflow, the view outside the window, and the sense of stability a space creates,
-                because these details will ultimately affect the people who live there.
+                My background spans Feng Shui, technology, music production, photography, and creative content.
+                This interdisciplinary perspective allows me to view real estate differently—evaluating not just a property’s current appeal, 
+                but its spatial harmony, atmosphere, and future growth potential.
               </p>
               <p>
-                I believe a truly good home is not defined only by its address or budget,
-                but by that moment you walk in and feel that you belong there.
+               A truly great home isn't defined solely by its address—it's defined by the moment you step inside and know you belong.
               </p>
               <p>
-                Beyond real estate, I am also exploring feng shui, AI & computing, music creation, photography, and content production.
-                These experiences help me understand the deeper meaning of space and how it shapes everyday life.
-              </p>
-              <p>
-                If you are looking for a property, whether for your own use or for investment, we can talk.
+                Whether you are looking for your next sanctuary or an insightful property investment, let’s connect.
               </p>
 
               <div class="service-box">
                 <h3>One-stop services (Hong Kong / Kowloon)</h3>
                 <ul>
-                  <li>Cleaning</li>
-                  <li>Home renovation</li>
-                  <li>Small-to-large repairs</li>
+                  <li>Cleaning Service</li>
+                  <li>Pest Control</li>
+                  <li>Home renovations</li>
+                  <li>All repairs</li>
                   <li>Lock opening / lock replacement</li>
                   <li>Troubleshooting</li>
                   <li>7-seater private transfer (HK / Kowloon / NT / Greater Bay Area)</li>
@@ -739,26 +771,24 @@
               </div>
             </div>
 
-            <p class="note" data-lang="zh">如果你想，我也可以再幫你把這段改成更有高級地產品牌感的版本。</p>
-            <p class="note" data-lang="en" style="display:none;">If you'd like, I can further shape this into a more polished introduction with a refined luxury property tone.</p>
-            <p class="note" data-lang="th" style="display:none;">หากต้องการ ผมสามารถปรับข้อความนี้ให้ดูหรูขึ้นและมีโทนแบรนด์อสังหาริมทรัพย์ระดับพรีเมียมมากขึ้นได้</p>
+           
           </section>
 
           <section id="links" class="card">
-            <h2 data-lang="zh">我的連結（可預覽）</h2>
-            <h2 data-lang="en" style="display:none;">My Links (Preview)</h2>
+            <h2 data-lang="zh">我的連結</h2>
+            <h2 data-lang="en" style="display:none;">My Links</h2>
             <h2 data-lang="th" style="display:none;">ลิงก์ของฉัน</h2>
 
             <div class="list" role="list">
               <div class="link-card" role="listitem">
                 <div style="min-width:0;">
                   <p class="name">YouTube</p>
-                  <p class="desc" data-lang="zh">頻道：有我在</p>
-                  <p class="desc" data-lang="en" style="display:none;">Channel</p>
+                  <p class="desc" data-lang="zh">頻道一: 有我在</p>
+                  <p class="desc" data-lang="en" style="display:none;">1ST Channel: iamhereyourehere</p>
                   <div class="url" data-url="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq">https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq">複製</button>
                 </div>
               </div>
@@ -766,12 +796,12 @@
               <div class="link-card" role="listitem">
                 <div style="min-width:0;">
                   <p class="name">YouTube</p>
-                  <p class="desc" data-lang="zh">第二個頻道</p>
+                  <p class="desc" data-lang="zh">第二頻道</p>
                   <p class="desc" data-lang="en" style="display:none;">Second channel</p>
                   <div class="url">https://www.youtube.com/@ryannc49</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://www.youtube.com/@ryannc49">複製</button>
                 </div>
               </div>
@@ -784,7 +814,7 @@
                   <div class="url">https://www.instagram.com/propertyarigatou</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">複製</button>
                 </div>
               </div>
@@ -798,7 +828,7 @@
                   <div class="url">https://www.facebook.com/marketplace/profile/61574888983465</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&mibextid=6ojiHh&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&mibextid=6ojiHh&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&mibextid=6ojiHh&utm_source=ig&utm_medium=social&utm_content=link_in_bio">複製</button>
                 </div>
               </div>
@@ -812,25 +842,18 @@
                   <div class="url">https://carousell.app.link/gy6fmRujm5b</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://carousell.app.link/gy6fmRujm5b">複製</button>
                 </div>
               </div>
             </div>
 
-            <p class="note" data-lang="zh">「預覽」會開新分頁；因為大多數網站禁止被嵌入 iframe（安全原因）。</p>
-            <p class="note" data-lang="en" style="display:none;">Preview opens in a new tab; most sites block iframe embedding for security.</p>
-            <p class="note" data-lang="th" style="display:none;">ปุ่มพรีวิวจะเปิดในแท็บใหม่ เนื่องจากหลายเว็บไซต์ไม่อนุญาตให้ฝังใน iframe ด้วยเหตุผลด้านความปลอดภัย</p>
-
             <figure class="feature-image">
               <img src="assets/feature_luxury_white.jpg" alt="高級白系住宅室內設計" />
               <figcaption class="feature-copy">
-                <p class="title" data-lang="zh">生活質感</p>
-                <p class="title" data-lang="en" style="display:none;">Premium Living</p>
-                <p class="title" data-lang="th" style="display:none;">คุณภาพชีวิตที่สัมผัสได้</p>
-                <p class="sub" data-lang="zh">改成更白、更高級的住宅感，用奶白與香檳金去帶出高端質感。</p>
-                <p class="sub" data-lang="en" style="display:none;">Updated with a brighter luxury interior using ivory and champagne tones for a more premium feel.</p>
-                <p class="sub" data-lang="th" style="display:none;">ภาพนี้ถูกปรับให้สว่างขึ้น ดูหรูขึ้น ด้วยโทนงาช้างและแชมเปญโกลด์ เพื่อสร้างความรู้สึกพรีเมียมมากขึ้น</p>
+                <p class="title" data-lang="zh">理想生活正在來臨</p>
+                <p class="title" data-lang="en" style="display:none;">Your ideal life is coming</p>
+                <p class="title" data-lang="th" style="display:none;">ชีวิตในฝันกำลังจะมาถึง</p>
               </figcaption>
             </figure>
           </section>
@@ -851,12 +874,9 @@
               </div>
             </div>
 
-            <p class="note" data-lang="zh">客人可以直接按入 WhatsApp 或電郵聯絡你。</p>
-            <p class="note" data-lang="en" style="display:none;">Visitors can contact you directly through WhatsApp or email.</p>
-            <p class="note" data-lang="th" style="display:none;">ผู้เข้าชมสามารถกดติดต่อคุณผ่าน WhatsApp หรืออีเมลได้โดยตรง</p>
 
             <div class="service-box" style="margin-top:12px;" data-lang="zh">
-              <h3>物業範圍（隨時聯絡）</h3>
+              <h3>負責物業範圍（隨時聯絡）</h3>
               <ul>
                 <li>買賣 / 租賃</li>
                 <li>住宅</li>
@@ -872,15 +892,15 @@
             <div class="service-box" style="margin-top:12px;" data-lang="en" style="display:none;">
               <h3>Property scope (reach out anytime)</h3>
               <ul>
-                <li>Buy / Sell / Rent</li>
+                <li>Buy / Sell / Rent / Lease</li>
                 <li>Residential</li>
-                <li>Industrial & Commercial</li>
-                <li>Retail shops</li>
+                <li>Industrial</li>
+                <li>Retail</li>
                 <li>Offices</li>
-                <li>Whole-building properties</li>
-                <li>Parking</li>
+                <li>Single lot Properties</li>
+                <li>CarPark Space</li>
               </ul>
-              <div class="fine">No matter what type of property you’re considering, feel free to contact me anytime.</div>
+              <div class="fine">Buying, selling, or renting? Whatever property you have in mind, reach out anytime—let’s make your next move seamless.</div>
             </div>
 
             <div class="service-box" style="margin-top:12px;" data-lang="th" style="display:none;">
@@ -899,8 +919,8 @@
           </section>
 
           <section id="ads" class="card" style="grid-column: 1 / -1;">
-            <h2 data-lang="zh">左側廣告連結（地產平台）</h2>
-            <h2 data-lang="en" style="display:none;">Ad Links (Platforms)</h2>
+            <h2 data-lang="zh">廣告連結（地產平台）</h2>
+            <h2 data-lang="en" style="display:none;">Ad Links (Real Estate Platforms)</h2>
             <h2 data-lang="th" style="display:none;">ลิงก์แพลตฟอร์มอสังหาฯ</h2>
 
             <div class="list" role="list">
@@ -910,10 +930,10 @@
                   <p class="desc" data-lang="zh">TD Properties Ltd</p>
                   <p class="desc" data-lang="en" style="display:none;">Agency profile</p>
                   <p class="desc" data-lang="th" style="display:none;">โปรไฟล์เอเจนซี่</p>
-                  <div class="url">https://www.spacious.hk/en/c/hong-kong/agencies/7608--360-property-services-ltd-e-440081</div>
+                  <div class="url">https://www.spacious.hk/en/c/hong-kong/agencies/7608</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://www.spacious.hk/en/c/hong-kong/agencies/7608--360-property-services-ltd-e-440081" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://www.spacious.hk/en/c/hong-kong/agencies/7608--360-property-services-ltd-e-440081" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://www.spacious.hk/en/c/hong-kong/agencies/7608--360-property-services-ltd-e-440081">複製</button>
                 </div>
               </div>
@@ -926,9 +946,23 @@
                   <div class="url">https://www.squarefoot.com.hk/en/agent/271</div>
                 </div>
                 <div class="actions">
-                  <a class="btn mini primary" href="https://www.squarefoot.com.hk/en/agent/271" target="_blank" rel="noopener">預覽</a>
+                  <a class="btn mini primary" href="https://www.squarefoot.com.hk/en/agent/271" target="_blank" rel="noopener">按此進入</a>
                   <button class="btn mini" type="button" data-copy="https://www.squarefoot.com.hk/en/agent/271">複製</button>
                 </div>
+              </div>
+
+              <div class="link-card" role="listitem">
+                <div style="min-width:0;">
+                  <p class="name">House730</p>
+                  <p class="desc" data-lang="zh">TD Properties Limited</p>
+                  <p class="desc" data-lang="en" style="display:none;">Agency profile</p>
+                  <p class="desc" data-lang="th" style="display:none;">โปรไฟล์เอเจนซี่</p>
+                  <div class="url">https://www.house730.com/en-us/agency/2182/buy/f1/Sale-TD-Properties-Limited/</div>
+                </div>
+                <div class="actions">
+                  <a class="btn mini primary" href="https://www.house730.com/en-us/agency/2182/buy/f1/Sale-TD-Properties-Limited/" target="_blank" rel="noopener">按此進入</a>
+                  <button class="btn mini" type="button" data-copy="https://www.house730.com/en-us/agency/2182/buy/f1/Sale-TD-Properties-Limited/">複製</button>
+                 </div>
               </div>
             </div>
           </section>
@@ -938,22 +972,11 @@
             <h2 data-lang="en" style="display:none;">Monthly Market Transactions (PDF)</h2>
             <h2 data-lang="th" style="display:none;">สรุปยอดซื้อขายรายเดือน (PDF)</h2>
 
-            <p class="note" data-lang="zh">
-              你每月更新 PDF 後，只要把檔案放進 <span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/monthly/</span>，
-              然後我幫你把下面連結更新成最新月份即可。
-            </p>
-            <p class="note" data-lang="en" style="display:none;">
-              When you update the monthly PDF, place it in <span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/monthly/</span> and I can update the links below.
-            </p>
-            <p class="note" data-lang="th" style="display:none;">
-              เมื่ออัปเดตไฟล์ PDF รายเดือน ให้วางไฟล์ไว้ที่ <span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/monthly/</span> แล้วฉันจะช่วยอัปเดตลิงก์ด้านล่างให้เป็นเดือนล่าสุด
-            </p>
-
             <div class="monthly-grid">
               <div class="monthly-item">
-                <p class="area" data-lang="zh">跑馬地・東半山</p>
-                <p class="area" data-lang="en" style="display:none;">Happy Valley · Mid-Levels East</p>
-                <p class="area" data-lang="th" style="display:none;">แฮปปี้วัลเลย์ · มิดเลเวลส์ตะวันออก</p>
+                <p class="area" data-lang="zh">跑馬地 / 東半山</p>
+                <p class="area" data-lang="en" style="display:none;">Happy Valley / Mid-Levels East</p>
+                <p class="area" data-lang="th" style="display:none;">แฮปปี้วัลเลย์ / มิดเลเวลส์ตะวันออก</p>
                 <p class="meta2" data-lang="zh">最新：待更新</p>
                 <p class="meta2" data-lang="en" style="display:none;">Latest: pending update</p>
                 <p class="meta2" data-lang="th" style="display:none;">ล่าสุด: รออัปเดต</p>
@@ -979,18 +1002,18 @@
               </div>
 
               <div class="monthly-item">
-                <p class="area" data-lang="zh">奧運 / 南昌</p>
-                <p class="area" data-lang="en" style="display:none;">Olympic · Nam Cheong</p>
-                <p class="area" data-lang="th" style="display:none;">โอลิมปิก · หน่ำชอง</p>
-                <p class="meta2" data-lang="zh">最新：待更新</p>
-                <p class="meta2" data-lang="en" style="display:none;">Latest: pending update</p>
-                <p class="meta2" data-lang="th" style="display:none;">ล่าสุด: รออัปเดต</p>
-                <div class="actions" style="margin-top:10px;">
-                  <a class="btn mini primary" href="#" onclick="return false;">預覽</a>
-                  <button class="btn mini" type="button" data-copy="assets/monthly/olympic-namcheong-YYYY-MM.pdf">複製路徑</button>
-                </div>
-                <div class="file">assets/monthly/olympic-namcheong-YYYY-MM.pdf</div>
-              </div>
+  <p class="area" data-lang="zh">奧運 / 南昌</p>
+  <p class="area" data-lang="en" style="display:none;">Olympic · Nam Cheong</p>
+  <p class="area" data-lang="th" style="display:none;">โอลิมปิก · หน่ำชอง</p>
+  <p class="meta2" data-lang="zh">最新：2026年7月</p>
+  <p class="meta2" data-lang="en" style="display:none;">Latest: July 2026</p>
+  <p class="meta2" data-lang="th" style="display:none;">ล่าสุด: กรกฎาคม 2026</p>
+  <div class="actions" style="margin-top:10px;">
+    <a class="btn mini primary" href="assets/monthly/olympic-namcheong-2026-07.pdf" target="_blank" rel="noopener">預覽</a>
+    <button class="btn mini" type="button" data-copy="assets/monthly/olympic-namcheong-2026-07.pdf">複製路徑</button>
+  </div>
+  <div class="file">assets/monthly/olympic-namcheong-2026-07.pdf</div>
+</div>
             </div>
           </section>
 
@@ -998,17 +1021,6 @@
             <h2 data-lang="zh">每日地產新聞（PDF）</h2>
             <h2 data-lang="en" style="display:none;">Daily Property News (PDF)</h2>
             <h2 data-lang="th" style="display:none;">ข่าวอสังหาฯ รายวัน (PDF)</h2>
-
-            <p class="note" data-lang="zh">
-              我已幫你把今日 PDF 放入網站：<span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/news/hket-2026-08-05.pdf</span>。
-              你之後每日上傳，只要保持同一個命名規則（例如 <span style="font-family:'Geist Mono',ui-monospace,monospace;">hket-YYYY-MM-DD.pdf</span>），我就可以幫你快速更新連結。
-            </p>
-            <p class="note" data-lang="en" style="display:none;">
-              Today’s PDF is saved as <span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/news/hket-2026-08-05.pdf</span>. Keep a similar naming rule (e.g. <span style="font-family:'Geist Mono',ui-monospace,monospace;">hket-YYYY-MM-DD.pdf</span>) and I can update it quickly.
-            </p>
-            <p class="note" data-lang="th" style="display:none;">
-              ไฟล์วันนี้ถูกบันทึกเป็น <span style="font-family:'Geist Mono',ui-monospace,monospace;">assets/news/hket-2026-08-05.pdf</span> หากอัปโหลดทุกวันและตั้งชื่อคล้ายกัน (เช่น <span style="font-family:'Geist Mono',ui-monospace,monospace;">hket-YYYY-MM-DD.pdf</span>) ฉันจะช่วยอัปเดตลิงก์ได้อย่างรวดเร็ว
-            </p>
 
             <div class="actions" style="margin-top:10px;">
               <a class="btn mini primary" href="assets/news/hket-2026-08-05.pdf" target="_blank" rel="noopener">預覽</a>
