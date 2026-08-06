@@ -304,32 +304,86 @@
       gap: 10px;
       margin-top: 10px;
     }
-    .link-card{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(234,240,255,0.12);
-      background: rgba(0,0,0,0.16);
-    }
-    .link-card .name{
-      font-weight: 700;
-      margin: 0;
-    }
-    .link-card .desc{
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .link-card .url{
-      font-family: "Geist Mono", ui-monospace, monospace;
-      color: rgba(234,240,255,0.65);
-      font-size: 12px;
-      overflow-wrap: anywhere;
-      margin-top: 6px;
-    }
+/* Links: grouped cards */
+.link-groups{
+  margin-top: 10px;
+  display: grid;
+  gap: 14px;
+}
+
+.link-group{
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(234,240,255,0.12);
+  background: rgba(0,0,0,0.12);
+}
+
+.link-group-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.link-group-title{
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.link-group-tag{
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(234,240,255,0.70);
+  border: 1px solid rgba(234,240,255,0.16);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.03);
+  white-space: nowrap;
+}
+
+.link-group-grid{
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 880px){
+  .link-group-grid.cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Links: icon row */
+.link-title-row{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.link-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(61,245,255,0.22);
+  background: linear-gradient(135deg, rgba(61,245,255,0.14), rgba(169,124,255,0.10));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: rgba(234,240,255,0.92);
+}
+
+.link-icon svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Links: make the URL line less noisy */
+.link-card .url{
+  opacity: 0.75;
+}
+
     .actions{
       display:flex;
       gap: 8px;
