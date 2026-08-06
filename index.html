@@ -573,7 +573,94 @@
       .gallery-grid{ grid-template-columns: 1fr; }
       .monthly-grid{ grid-template-columns: 1fr; }
     }
-  </style>
+  
+
+/*
+  用法：
+  1) 打开你的 index.html
+  2) 在 <style> 里（建议放在 .link-card / .list 那段 CSS 下面）加入本段
+*/
+
+/* Links: grouped cards */
+.link-groups{
+  margin-top: 10px;
+  display: grid;
+  gap: 14px;
+}
+
+.link-group{
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(234,240,255,0.12);
+  background: rgba(0,0,0,0.12);
+}
+
+.link-group-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.link-group-title{
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.link-group-tag{
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(234,240,255,0.70);
+  border: 1px solid rgba(234,240,255,0.16);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.03);
+  white-space: nowrap;
+}
+
+.link-group-grid{
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 880px){
+  .link-group-grid.cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Links: icon row */
+.link-title-row{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.link-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(61,245,255,0.22);
+  background: linear-gradient(135deg, rgba(61,245,255,0.14), rgba(169,124,255,0.10));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: rgba(234,240,255,0.92);
+}
+
+.link-icon svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Links: make the URL line less noisy */
+.link-card .url{
+  opacity: 0.75;
+}
+</style>
 </head>
 
 <body>
@@ -617,9 +704,9 @@
       <main class="panel main">
         <section class="hero">
           <h1>
-            <span data-lang="zh">有我在 你的好拍檔</span>
-            <span data-lang="en" style="display:none;">iamhereyourehere your right-hand man</span>
-            <span data-lang="th" style="display:none;">iamhereyourehere คู่หูที่ดีของคุณ</span>
+            <span data-lang="zh">香港中介 你的好拍檔</span>
+            <span data-lang="en" style="display:none;">HK Real Estate Agent your right-hand man</span>
+            <span data-lang="th" style="display:none;">HK Real Estate Agent คู่หูที่ดีของคุณ</span>
           </h1>
           <p class="sub" data-lang="zh">
             幫你找到適合生活的空間 
@@ -775,88 +862,188 @@
           </section>
 
           <section id="links" class="card">
-            <h2 data-lang="zh">我的連結</h2>
-            <h2 data-lang="en" style="display:none;">My Links</h2>
-            <h2 data-lang="th" style="display:none;">ลิงก์ของฉัน</h2>
+  <h2 data-lang="zh">我的連結</h2>
+  <h2 data-lang="en" style="display:none;">My Links</h2>
+  <h2 data-lang="th" style="display:none;">ลิงก์ของฉัน</h2>
 
-            <div class="list" role="list">
-              <div class="link-card" role="listitem">
-                <div style="min-width:0;">
-                  <p class="name">YouTube</p>
-                  <p class="desc" data-lang="zh">頻道一: 有我在</p>
-                  <p class="desc" data-lang="en" style="display:none;">1ST Channel: iamhereyourehere</p>
-                  <div class="url" data-url="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq">https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq</div>
-                </div>
-                <div class="actions">
-                  <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">按此進入</a>
-                  <button class="btn mini" type="button" data-copy="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq">複製</button>
-                </div>
-              </div>
+  <div class="link-groups">
+    <!-- YouTube -->
+    <div class="link-group">
+      <div class="link-group-head">
+        <div class="link-group-titles">
+          <div class="link-group-title" data-lang="zh">影片</div>
+          <div class="link-group-title" data-lang="en" style="display:none;">Video</div>
+          <div class="link-group-title" data-lang="th" style="display:none;">วิดีโอ</div>
+        </div>
+        <span class="link-group-tag">YouTube</span>
+      </div>
 
-              <div class="link-card" role="listitem">
-                <div style="min-width:0;">
-                  <p class="name">YouTube</p>
-                  <p class="desc" data-lang="zh">第二頻道</p>
-                  <p class="desc" data-lang="en" style="display:none;">Second channel</p>
-                  <div class="url">https://www.youtube.com/@ryannc49</div>
-                </div>
-                <div class="actions">
-                  <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">按此進入</a>
-                  <button class="btn mini" type="button" data-copy="https://www.youtube.com/@ryannc49">複製</button>
-                </div>
-              </div>
-
-              <div class="link-card" role="listitem">
-                <div style="min-width:0;">
-                  <p class="name">Instagram</p>
-                  <p class="desc" data-lang="zh">propertyarigatou</p>
-                  <p class="desc" data-lang="en" style="display:none;">propertyarigatou</p>
-                  <div class="url">https://www.instagram.com/propertyarigatou</div>
-                </div>
-                <div class="actions">
-                  <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">按此進入</a>
-                  <button class="btn mini" type="button" data-copy="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">複製</button>
-                </div>
-              </div>
-
-              <div class="link-card" role="listitem">
-                <div style="min-width:0;">
-                  <p class="name">Facebook Marketplace</p>
-                  <p class="desc" data-lang="zh">我的 Marketplace Profile</p>
-                  <p class="desc" data-lang="en" style="display:none;">Marketplace profile</p>
-                  <p class="desc" data-lang="th" style="display:none;">โปรไฟล์ Marketplace</p>
-                  <div class="url">https://www.facebook.com/marketplace/profile/61574888983465</div>
-                </div>
-                <div class="actions">
-                  <a class="btn mini primary" href="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&mibextid=6ojiHh&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">按此進入</a>
-                  <button class="btn mini" type="button" data-copy="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&mibextid=6ojiHh&utm_source=ig&utm_medium=social&utm_content=link_in_bio">複製</button>
-                </div>
-              </div>
-
-              <div class="link-card" role="listitem">
-                <div style="min-width:0;">
-                  <p class="name">Carousell</p>
-                  <p class="desc" data-lang="zh">我的 Carousell 連結</p>
-                  <p class="desc" data-lang="en" style="display:none;">Carousell link</p>
-                  <p class="desc" data-lang="th" style="display:none;">ลิงก์ Carousell</p>
-                  <div class="url">https://carousell.app.link/gy6fmRujm5b</div>
-                </div>
-                <div class="actions">
-                  <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">按此進入</a>
-                  <button class="btn mini" type="button" data-copy="https://carousell.app.link/gy6fmRujm5b">複製</button>
-                </div>
+      <div class="link-group-grid cols-2" role="list">
+        <div class="link-card" role="listitem">
+          <div style="min-width:0;">
+            <div class="link-title-row">
+              <span class="link-icon" aria-hidden="true">
+                <!-- YouTube icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M21.7 7.6a3 3 0 0 0-2.1-2.1C17.8 5 12 5 12 5s-5.8 0-7.6.5A3 3 0 0 0 2.3 7.6 31 31 0 0 0 2 12c0 1.5.1 2.9.3 4.4a3 3 0 0 0 2.1 2.1C6.2 19 12 19 12 19s5.8 0 7.6-.5a3 3 0 0 0 2.1-2.1c.2-1.5.3-2.9.3-4.4 0-1.5-.1-2.9-.3-4.4Z" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+                  <path d="M10.3 9.2v5.6l5-2.8-5-2.8Z" fill="currentColor"/>
+                </svg>
+              </span>
+              <div style="min-width:0;">
+                <p class="name">YouTube</p>
+                <p class="desc" data-lang="zh">頻道｜有我在</p>
+                <p class="desc" data-lang="en" style="display:none;">Channel | iamhereyourehere</p>
+                <p class="desc" data-lang="th" style="display:none;">ช่อง | iamhereyourehere</p>
+                <div class="url">@iamhereyourehere</div>
               </div>
             </div>
+          </div>
+          <div class="actions">
+            <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">按此進入</a>
+            <button class="btn mini" type="button" data-copy="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq">複製</button>
+          </div>
+        </div>
 
-            <figure class="feature-image">
-              <img src="assets/feature_luxury_white.jpg" alt="高級白系住宅室內設計" />
-              <figcaption class="feature-copy">
-                <p class="title" data-lang="zh">理想生活正在來臨</p>
-                <p class="title" data-lang="en" style="display:none;">Your ideal life is coming</p>
-                <p class="title" data-lang="th" style="display:none;">ชีวิตในฝันกำลังจะมาถึง</p>
-              </figcaption>
-            </figure>
-          </section>
+        <div class="link-card" role="listitem">
+          <div style="min-width:0;">
+            <div class="link-title-row">
+              <span class="link-icon" aria-hidden="true">
+                <!-- YouTube icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M21.7 7.6a3 3 0 0 0-2.1-2.1C17.8 5 12 5 12 5s-5.8 0-7.6.5A3 3 0 0 0 2.3 7.6 31 31 0 0 0 2 12c0 1.5.1 2.9.3 4.4a3 3 0 0 0 2.1 2.1C6.2 19 12 19 12 19s5.8 0 7.6-.5a3 3 0 0 0 2.1-2.1c.2-1.5.3-2.9.3-4.4 0-1.5-.1-2.9-.3-4.4Z" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+                  <path d="M10.3 9.2v5.6l5-2.8-5-2.8Z" fill="currentColor"/>
+                </svg>
+              </span>
+              <div style="min-width:0;">
+                <p class="name">YouTube</p>
+                <p class="desc" data-lang="zh">頻道｜第二頻道</p>
+                <p class="desc" data-lang="en" style="display:none;">Channel | second channel</p>
+                <p class="desc" data-lang="th" style="display:none;">ช่อง | ช่องที่สอง</p>
+                <div class="url">@ryannc49</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">按此進入</a>
+            <button class="btn mini" type="button" data-copy="https://www.youtube.com/@ryannc49">複製</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="link-group">
+      <div class="link-group-head">
+        <div class="link-group-titles">
+          <div class="link-group-title" data-lang="zh">社交</div>
+          <div class="link-group-title" data-lang="en" style="display:none;">Social</div>
+          <div class="link-group-title" data-lang="th" style="display:none;">โซเชียล</div>
+        </div>
+        <span class="link-group-tag">Instagram</span>
+      </div>
+
+      <div class="link-group-grid" role="list">
+        <div class="link-card" role="listitem">
+          <div style="min-width:0;">
+            <div class="link-title-row">
+              <span class="link-icon" aria-hidden="true">
+                <!-- Instagram icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9A4.7 4.7 0 0 1 16.5 21.2h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+                  <path d="M12 16.2A4.2 4.2 0 1 0 12 7.8a4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M17.3 6.9h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div style="min-width:0;">
+                <p class="name">Instagram</p>
+                <p class="desc" data-lang="zh">帳號｜propertyarigatou</p>
+                <p class="desc" data-lang="en" style="display:none;">Account | propertyarigatou</p>
+                <p class="desc" data-lang="th" style="display:none;">บัญชี | propertyarigatou</p>
+                <div class="url">@propertyarigatou</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">按此進入</a>
+            <button class="btn mini" type="button" data-copy="https://www.instagram.com/propertyarigatou?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==">複製</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platforms -->
+    <div class="link-group">
+      <div class="link-group-head">
+        <div class="link-group-titles">
+          <div class="link-group-title" data-lang="zh">平台</div>
+          <div class="link-group-title" data-lang="en" style="display:none;">Platforms</div>
+          <div class="link-group-title" data-lang="th" style="display:none;">แพลตฟอร์ม</div>
+        </div>
+        <span class="link-group-tag">Marketplace</span>
+      </div>
+
+      <div class="link-group-grid cols-2" role="list">
+        <div class="link-card" role="listitem">
+          <div style="min-width:0;">
+            <div class="link-title-row">
+              <span class="link-icon" aria-hidden="true">
+                <!-- Facebook icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M13.2 21v-7h2.3l.4-2.7h-2.7V9.5c0-.8.2-1.3 1.3-1.3H16V5.7c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v1.7H7.3V14h2.5v7h3.4Z" fill="currentColor" opacity="0.95"/>
+                </svg>
+              </span>
+              <div style="min-width:0;">
+                <p class="name">Facebook Marketplace</p>
+                <p class="desc" data-lang="zh">我的 Marketplace Profile</p>
+                <p class="desc" data-lang="en" style="display:none;">My Marketplace profile</p>
+                <p class="desc" data-lang="th" style="display:none;">โปรไฟล์ Marketplace</p>
+                <div class="url">facebook.com/marketplace</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn mini primary" href="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&amp;mibextid=6ojiHh&amp;utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">按此進入</a>
+            <button class="btn mini" type="button" data-copy="https://www.facebook.com/marketplace/profile/61574888983465/?ref=permalink&amp;mibextid=6ojiHh&amp;utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio">複製</button>
+          </div>
+        </div>
+
+        <div class="link-card" role="listitem">
+          <div style="min-width:0;">
+            <div class="link-title-row">
+              <span class="link-icon" aria-hidden="true">
+                <!-- Carousell icon (simple C) -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M16.8 8.1a6 6 0 1 0 0 7.8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" opacity="0.95"/>
+                </svg>
+              </span>
+              <div style="min-width:0;">
+                <p class="name">Carousell</p>
+                <p class="desc" data-lang="zh">我的 Carousell 連結</p>
+                <p class="desc" data-lang="en" style="display:none;">My Carousell link</p>
+                <p class="desc" data-lang="th" style="display:none;">ลิงก์ Carousell</p>
+                <div class="url">carousell.app.link</div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">按此進入</a>
+            <button class="btn mini" type="button" data-copy="https://carousell.app.link/gy6fmRujm5b">複製</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <figure class="feature-image">
+    <img src="assets/feature_luxury_white.jpg" alt="高級白系住宅室內設計" />
+    <figcaption class="feature-copy">
+      <p class="title" data-lang="zh">理想生活正在來臨</p>
+      <p class="title" data-lang="en" style="display:none;">Your ideal life is coming</p>
+      <p class="title" data-lang="th" style="display:none;">ชีวิตในฝันกำลังจะมาถึง</p>
+    </figcaption>
+  </figure>
+</section>
+
 
           <section id="contact" class="card">
             <h2 data-lang="zh">聯絡方式</h2>
@@ -876,7 +1063,7 @@
 
 
             <div class="service-box" style="margin-top:12px;" data-lang="zh">
-              <h3>負責物業範圍（隨時聯絡）</h3>
+              <h3>本人負責物業範圍 歡迎隨時聯絡</h3>
               <ul>
                 <li>買賣 / 租賃</li>
                 <li>住宅</li>
@@ -890,7 +1077,7 @@
             </div>
 
             <div class="service-box" style="margin-top:12px;" data-lang="en" style="display:none;">
-              <h3>Property scope (reach out anytime)</h3>
+              <h3>Property scope can reach me out anytime</h3>
               <ul>
                 <li>Buy / Sell / Rent / Lease</li>
                 <li>Residential</li>
@@ -904,7 +1091,7 @@
             </div>
 
             <div class="service-box" style="margin-top:12px;" data-lang="th" style="display:none;">
-              <h3>ประเภทอสังหาฯ (ติดต่อได้เสมอ)</h3>
+              <h3>ประเภทอสังหาฯ ติดต่อได้เสมอ</h3>
               <ul>
                 <li>ซื้อ / ขาย / เช่า</li>
                 <li>ที่อยู่อาศัย</li>
@@ -928,8 +1115,8 @@
                 <div style="min-width:0;">
                   <p class="name">Spacious</p>
                   <p class="desc" data-lang="zh">TD Properties Ltd</p>
-                  <p class="desc" data-lang="en" style="display:none;">Agency profile</p>
-                  <p class="desc" data-lang="th" style="display:none;">โปรไฟล์เอเจนซี่</p>
+                  <p class="desc" data-lang="en" style="display:none;">TD Properties Ltd</p>
+                  <p class="desc" data-lang="th" style="display:none;">TD Properties Ltd</p>
                   <div class="url">https://www.spacious.hk/en/c/hong-kong/agencies/7608</div>
                 </div>
                 <div class="actions">
@@ -941,8 +1128,9 @@
               <div class="link-card" role="listitem">
                 <div style="min-width:0;">
                   <p class="name">Squarefoot</p>
-                  <p class="desc" data-lang="zh">Agent Profile</p>
-                  <p class="desc" data-lang="en" style="display:none;">Agent profile</p>
+                  <p class="desc" data-lang="zh">TD Properties Ltd</p>
+                  <p class="desc" data-lang="en" style="display:none;">TD Properties Ltd</p>
+                  <p class="desc" data-lang="th" style="display:none;">TD Properties Ltd</p>
                   <div class="url">https://www.squarefoot.com.hk/en/agent/271</div>
                 </div>
                 <div class="actions">
@@ -955,9 +1143,9 @@
                 <div style="min-width:0;">
                   <p class="name">House730</p>
                   <p class="desc" data-lang="zh">TD Properties Limited</p>
-                  <p class="desc" data-lang="en" style="display:none;">Agency profile</p>
-                  <p class="desc" data-lang="th" style="display:none;">โปรไฟล์เอเจนซี่</p>
-                  <div class="url">https://www.house730.com/en-us/agency/2182/buy/f1/Sale-TD-Properties-Limited/</div>
+                  <p class="desc" data-lang="en" style="display:none;">TD Properties Limited</p>
+                  <p class="desc" data-lang="th" style="display:none;">TD Properties Limited</p>
+                  <div class="url">https://www.house730.com/agency/2182/buy/f1/%E5%94%AE%E7%9B%A4-%E5%A4%A9%E5%9C%B0%E7%BD%AE%E6%A5%AD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/</div>
                 </div>
                 <div class="actions">
                   <a class="btn mini primary" href="https://www.house730.com/en-us/agency/2182/buy/f1/Sale-TD-Properties-Limited/" target="_blank" rel="noopener">按此進入</a>
@@ -977,14 +1165,14 @@
                 <p class="area" data-lang="zh">跑馬地 / 東半山</p>
                 <p class="area" data-lang="en" style="display:none;">Happy Valley / Mid-Levels East</p>
                 <p class="area" data-lang="th" style="display:none;">แฮปปี้วัลเลย์ / มิดเลเวลส์ตะวันออก</p>
-                <p class="meta2" data-lang="zh">最新：待更新</p>
+                <p class="meta2" data-lang="zh">最新：2026年7月</p>
                 <p class="meta2" data-lang="en" style="display:none;">Latest: pending update</p>
                 <p class="meta2" data-lang="th" style="display:none;">ล่าสุด: รออัปเดต</p>
                 <div class="actions" style="margin-top:10px;">
-                  <a class="btn mini primary" href="#" onclick="return false;">預覽</a>
-                  <button class="btn mini" type="button" data-copy="assets/monthly/happyvalley-midlevelseast-YYYY-MM.pdf">複製路徑</button>
+                  <a class="btn mini primary" href="assets/monthly/happyvalley-midlevelseast-2026-07.pdf" target="_blank" rel="noopener">預覽</a>
+                  <button class="btn mini" type="button" data-copy="assets/monthly/happyvalley-midlevelseast-2026-07.pdf">複製路徑</button>
                 </div>
-                <div class="file">assets/monthly/happyvalley-midlevelseast-YYYY-MM.pdf</div>
+                <div class="file">assets/monthly/happyvalley-midlevelseast-2026-07.pdf</div>
               </div>
 
               <div class="monthly-item">
@@ -995,10 +1183,10 @@
                 <p class="meta2" data-lang="en" style="display:none;">Latest: pending update</p>
                 <p class="meta2" data-lang="th" style="display:none;">ล่าสุด: รออัปเดต</p>
                 <div class="actions" style="margin-top:10px;">
-                  <a class="btn mini primary" href="#" onclick="return false;">預覽</a>
-                  <button class="btn mini" type="button" data-copy="assets/monthly/midlevels-west-YYYY-MM.pdf">複製路徑</button>
+                  <a class="btn mini primary" href="assets/monthly/midlevels-west-2026-07.pdf" target="_blank" rel="noopener">預覽</a>
+                  <button class="btn mini" type="button" data-copy="assets/monthly/midlevels-west-2026-07.pdf">複製路徑</button>
                 </div>
-                <div class="file">assets/monthly/midlevels-west-YYYY-MM.pdf</div>
+                <div class="file">assets/monthly/midlevels-west-2026-07.pdf</div>
               </div>
 
               <div class="monthly-item">
@@ -1023,12 +1211,12 @@
             <h2 data-lang="th" style="display:none;">ข่าวอสังหาฯ รายวัน (PDF)</h2>
 
             <div class="actions" style="margin-top:10px;">
-              <a class="btn mini primary" href="assets/news/hket-2026-08-05.pdf" target="_blank" rel="noopener">預覽</a>
-              <button class="btn mini" type="button" data-copy="assets/news/hket-2026-08-05.pdf">複製路徑</button>
+              <a class="btn mini primary" href="assets/news/hket-2026-08-06.pdf" target="_blank" rel="noopener">預覽</a>
+              <button class="btn mini" type="button" data-copy="assets/news/hket-2026-08-06.pdf">複製路徑</button>
             </div>
 
             <div class="pdf-embed">
-              <iframe title="每日地產新聞 PDF" src="assets/news/hket-2026-08-05.pdf"></iframe>
+              <iframe title="每日地產新聞 PDF" src="assets/news/hket-2026-08-06.pdf"></iframe>
             </div>
           </section>
         </div>
@@ -1037,7 +1225,7 @@
           <div>
             <span data-lang="zh">©</span>
             <span data-lang="en" style="display:none;">©</span>
-            <span class="mono">iamhereyourehere</span>
+            <span class="mono">iamhereyourehere all rights preserved</span>
           </div>
           <div class="mono">Tech theme · glass + neon</div>
         </footer>
