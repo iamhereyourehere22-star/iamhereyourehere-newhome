@@ -7,7 +7,6 @@
   <meta name="description" content="有我在（iamhereyourehere）｜地產相關連結與個人簡介" />
 
   <style>
-    /* Fonts (local) */
     @font-face {
       font-family: "Tektur";
       src: url("./shared/fonts/Tektur-Regular.ttf") format("truetype");
@@ -64,8 +63,8 @@
 
     .layout{
       display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 18px;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
       align-items: start;
     }
 
@@ -80,21 +79,21 @@
     /* Sidebar */
     .side{ position: sticky; top: 18px; padding: 18px 16px; }
     .brand{
-      padding: 14px; border-radius: 14px;
-      border: 1px solid rgba(61,245,255,0.18);
-      background: linear-gradient(180deg, rgba(61,245,255,0.08), rgba(169,124,255,0.06));
+      padding: 16px; border-radius: 14px;
+      border: 1px solid rgba(61,245,255,0.25);
+      background: linear-gradient(180deg, rgba(61,245,255,0.12), rgba(169,124,255,0.08));
     }
-    .brand .title-cn{ letter-spacing: 0.22em; font-size: 19px; font-weight: 700; margin: 0; }
-    .brand .title-en{ color: rgba(234,240,255,0.84); font-size: 14px; margin: 4px 0 0; }
+    .brand .title-cn{ letter-spacing: 0.2em; font-size: 20px; font-weight: 700; margin: 0; }
+    .brand .title-en{ color: rgba(234,240,255,0.84); font-size: 13px; margin: 4px 0 0; }
 
     .side .nav{ margin-top: 14px; display: grid; gap: 8px; }
     .nav a{
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 12px; border-radius: 12px;
       border: 1px solid rgba(234,240,255,0.10); background: rgba(255,255,255,0.04);
-      transition: all .15s ease;
+      transition: all .2s ease;
     }
-    .nav a:hover{ transform: translateY(-1px); border-color: rgba(61,245,255,0.32); }
+    .nav a:hover{ transform: translateX(3px); border-color: rgba(61,245,255,0.4); background: rgba(61,245,255,0.08); }
     .tag{ font-family: "Geist Mono", monospace; font-size: 11px; color: var(--muted); }
 
     .side .meta{
@@ -106,85 +105,140 @@
     .btn{
       appearance: none; border: 1px solid rgba(234,240,255,0.18);
       background: rgba(255,255,255,0.05); color: var(--ink);
-      padding: 8px 10px; border-radius: 12px; cursor: pointer;
-      font-size: 13px; transition: all .15s ease;
+      padding: 8px 12px; border-radius: 12px; cursor: pointer;
+      font-size: 13px; transition: all .2s ease;
     }
-    .btn:hover{ border-color: rgba(61,245,255,0.34); transform: translateY(-1px); }
+    .btn:hover{ border-color: rgba(61,245,255,0.5); transform: translateY(-1px); background: rgba(61,245,255,0.1); }
     .btn.primary{
-      border-color: rgba(61,245,255,0.38);
-      background: linear-gradient(135deg, rgba(61,245,255,0.18), rgba(169,124,255,0.12));
+      border-color: rgba(61,245,255,0.4);
+      background: linear-gradient(135deg, rgba(61,245,255,0.22), rgba(169,124,255,0.16));
+      font-weight: 700;
     }
 
-    /* Main */
-    .main{ padding: 18px; }
-    .hero{
-      padding: 20px; border-radius: var(--radius-lg);
-      border: 1px solid rgba(61,245,255,0.18);
-      background: radial-gradient(520px 220px at 14% 0%, rgba(61,245,255,0.12), transparent 60%), rgba(255,255,255,0.03);
+    /* Main & Hero Banner */
+    .main{ padding: 20px; }
+    
+    .hero-banner{
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(61,245,255,0.25);
+      min-height: 240px;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
     }
-    .hero h1{ margin: 0; font-family: "Tektur", sans-serif; font-size: 26px; }
-    .hero .sub{ margin: 10px 0 0; color: var(--muted); }
-
-    .grid{ margin-top: 14px; display: grid; gap: 14px; }
-    .card{ padding: 18px; border-radius: var(--radius-lg); border: 1px solid rgba(234,240,255,0.12); background: rgba(255,255,255,0.03); }
-    .card h2{ margin: 0 0 12px; font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
-
-    .service-box{
-      margin-top: 14px; padding: 14px; border-radius: 16px;
-      border: 1px solid rgba(61,245,255,0.18);
-      background: linear-gradient(180deg, rgba(61,245,255,0.08), rgba(96,157,230,0.06));
+    .hero-banner::before{
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(3,19,38,0.2) 0%, rgba(3,19,38,0.85) 100%);
     }
-    .service-box h3{ margin: 0 0 8px; font-size: 14px; }
-    .service-box ul{ margin: 0; padding-left: 1.2rem; font-size: 13px; }
-    .service-box li{ margin: 4px 0; }
-    .service-box .fine{ margin-top: 10px; color: var(--muted); font-size: 12px; }
+    .hero-content{
+      position: relative; z-index: 1;
+      backdrop-filter: blur(8px);
+      background: rgba(3, 19, 38, 0.45);
+      padding: 16px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      width: 100%;
+    }
+    .hero-content h1{ margin: 0; font-family: "Tektur", sans-serif; font-size: 24px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .hero-content .sub{ margin: 6px 0 0; color: rgba(234,240,255,0.85); font-size: 14px; }
 
-    /* Links */
-    .link-groups{ display: grid; gap: 14px; margin-top: 10px; }
-    .link-group{ padding: 12px; border-radius: 16px; border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.12); }
-    .link-group-head{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .link-group-title{ font-weight: 800; }
-    .link-group-tag{ font-family: "Geist Mono", monospace; font-size: 11px; color: rgba(234,240,255,0.70); border: 1px solid rgba(234,240,255,0.16); border-radius: 999px; padding: 2px 8px; }
-    .link-group-grid{ display: grid; gap: 10px; }
+    .grid{ margin-top: 20px; display: grid; gap: 20px; }
+    .card{ padding: 20px; border-radius: var(--radius-lg); border: 1px solid rgba(234,240,255,0.12); background: rgba(255,255,255,0.03); }
+    .card h2{ margin: 0 0 16px; font-size: 17px; font-weight: 700; border-bottom: 1px solid var(--rule); padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+    /* Photo Gallery Section */
+    .gallery-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .gallery-item{
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 140px;
+      border: 1px solid rgba(234,240,255,0.15);
+    }
+    .gallery-item img{
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .3s ease;
+    }
+    .gallery-item:hover img{ transform: scale(1.08); }
+    .gallery-caption{
+      position: absolute; bottom: 0; inset-x: 0;
+      background: rgba(3,19,38,0.75); padding: 4px 8px;
+      font-size: 11px; text-align: center; color: var(--muted);
+    }
+
+    /* Video Embed */
+    .video-container{
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(61,245,255,0.2);
+      margin-top: 10px;
+    }
+    .video-container iframe{
+      position: absolute; top:0; left:0; width:100%; height:100%; border:0;
+    }
+
+    /* Service Cards */
+    .service-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+    .service-card-mini{
+      padding: 12px; border-radius: 12px;
+      border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.2);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .service-card-mini .icon{ font-size: 20px; }
+
+    /* Links Cards */
+    .link-group-grid{ display: grid; gap: 12px; }
     @media (min-width: 880px){ .link-group-grid.cols-2{ grid-template-columns: repeat(2, 1fr); } }
 
     .link-card{
       display:flex; align-items:center; justify-content: space-between; gap: 10px;
-      padding: 12px; border-radius: 14px; border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.16);
+      padding: 14px; border-radius: 14px; border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.2);
+      transition: border-color .2s ease;
     }
-    .link-title-row{ display: flex; align-items: center; gap: 10px; }
+    .link-card:hover{ border-color: rgba(61,245,255,0.3); }
+    .link-title-row{ display: flex; align-items: center; gap: 12px; }
     .link-icon{
-      width: 32px; height: 32px; border-radius: 10px; border: 1px solid rgba(61,245,255,0.22);
-      background: rgba(61,245,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 10px; border: 1px solid rgba(61,245,255,0.25);
+      background: rgba(61,245,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px;
     }
     .link-card .name{ font-weight: 700; margin: 0; font-size: 14px; }
-    .link-card .desc{ margin: 2px 0 0; color: var(--muted); font-size: 12px; }
     .link-card .url{ font-family: "Geist Mono", monospace; color: rgba(234,240,255,0.5); font-size: 11px; margin-top: 2px; }
     .actions{ display:flex; gap: 6px; }
-    .mini{ font-size: 12px; padding: 5px 8px; border-radius: 8px; }
+    .mini{ font-size: 12px; padding: 6px 10px; border-radius: 8px; }
 
     /* Monthly & PDF */
-    .monthly-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-    .monthly-item{ padding: 12px; border-radius: 14px; border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.16); }
-    .monthly-item .area{ margin: 0; font-weight: 700; font-size: 13px; }
-    .monthly-item .meta2{ margin: 4px 0 8px; color: var(--muted); font-size: 12px; }
+    .monthly-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+    .monthly-item{ padding: 14px; border-radius: 14px; border: 1px solid rgba(234,240,255,0.12); background: rgba(0,0,0,0.2); text-align: center; }
+    .monthly-item .area{ margin: 0; font-weight: 700; font-size: 14px; }
+    .monthly-item .meta2{ margin: 6px 0 10px; color: var(--muted); font-size: 12px; }
 
-    .pdf-embed{ margin-top: 14px; border-radius: 16px; border: 1px solid rgba(234,240,255,0.12); overflow: hidden; background: rgba(0,0,0,0.18); }
+    .pdf-embed{ margin-top: 14px; border-radius: 16px; border: 1px solid rgba(234,240,255,0.15); overflow: hidden; background: rgba(0,0,0,0.3); }
     .pdf-embed iframe{ width: 100%; height: 500px; border: 0; display: block; }
 
     .chip{ font-family: "Geist Mono", monospace; font-size: 11px; color: rgba(234,240,255,0.70); border: 1px solid rgba(234,240,255,0.16); border-radius: 999px; padding: 4px 8px; display: inline-flex; gap: 6px; align-items:center; }
     .dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 
-    /* 語言隱藏控制器 */
+    /* Language Toggle Controller */
     [data-lang]:not([data-lang="zh"]) { display: none; }
 
-    footer{ margin-top: 18px; padding: 12px; color: rgba(234,240,255,0.50); font-size: 12px; display:flex; justify-content: space-between; }
+    footer{ margin-top: 20px; padding: 12px; color: rgba(234,240,255,0.50); font-size: 12px; display:flex; justify-content: space-between; }
 
     @media (max-width: 880px){
       .layout{ grid-template-columns: 1fr; }
       .side{ position: relative; top: 0; }
-      .link-group-grid.cols-2{ grid-template-columns: 1fr; }
-      .monthly-grid{ grid-template-columns: 1fr; }
+      .link-group-grid.cols-2, .gallery-grid, .service-grid, .monthly-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -200,10 +254,12 @@
 
         <nav class="nav">
           <a href="#about"><span>個人簡介</span><span class="tag">about</span></a>
+          <a href="#gallery"><span>空間美學</span><span class="tag">gallery</span></a>
+          <a href="#video"><span>精選影音</span><span class="tag">video</span></a>
           <a href="#links"><span>我的連結</span><span class="tag">links</span></a>
-          <a href="#contact"><span>聯絡方式</span><span class="tag">contact</span></a>
-          <a href="#monthly"><span>每月成交</span><span class="tag">monthly</span></a>
           <a href="#ads"><span>廣告平台</span><span class="tag">ads</span></a>
+          <a href="#monthly"><span>每月成交</span><span class="tag">monthly</span></a>
+          <a href="#contact"><span>聯絡方式</span><span class="tag">contact</span></a>
         </nav>
 
         <div class="meta">
@@ -222,22 +278,24 @@
       </aside>
 
       <main class="panel main">
-        <section class="hero">
-          <h1>
-            <span data-lang="zh">香港中介 你的好拍檔</span>
-            <span data-lang="en">HK Real Estate Agent - Your Right-Hand Partner</span>
-            <span data-lang="th">HK Real Estate Agent คู่หูที่ดีของคุณ</span>
-          </h1>
-          <p class="sub">
-            <span data-lang="zh">幫你找到適合生活的空間</span>
-            <span data-lang="en">Helping you find a suitable dream space</span>
-            <span data-lang="th">ยินดีต้อนรับสู่หน้าเพจของฉัน</span>
-          </p>
+        <section class="hero-banner">
+          <div class="hero-content">
+            <h1>
+              <span data-lang="zh">香港中介 你的好拍檔</span>
+              <span data-lang="en">HK Real Estate Agent - Your Right-Hand Partner</span>
+              <span data-lang="th">HK Real Estate Agent คู่หูที่ดีของคุณ</span>
+            </h1>
+            <p class="sub">
+              <span data-lang="zh">幫你找到適合生活的空間 ｜ 選房不只是看面積與價錢，也看環境與氣場</span>
+              <span data-lang="en">Helping you find a suitable dream space beyond layout and price.</span>
+              <span data-lang="th">ยินดีต้อนรับสู่หน้าเพจของฉัน ช่วยคุณค้นหาพื้นที่ที่เหมาะสม</span>
+            </p>
+          </div>
         </section>
 
         <div class="grid">
           <section id="about" class="card">
-            <h2>
+            <h2>👤 
               <span data-lang="zh">個人簡介</span>
               <span data-lang="en">About Ryan</span>
               <span data-lang="th">เกี่ยวกับ Ryan</span>
@@ -245,116 +303,135 @@
 
             <div data-lang="zh">
               <p>你好，我是 Ryan。我是一名相信「空間會影響生活」的香港地產中介。</p>
-              <p>我幫助客戶在香港、大灣區、清邁等地方，找到適合居住或投資的空間。對我來說，選房不只是看面積和價錢，也會看環境、氣場，以及未來的可能性。</p>
-              <p>除了地產，我也在學習風水、AI 電腦、音樂創作、攝影與內容製作。這些背景讓我能用更完整的角度，去理解一個空間對生活真正的意義。</p>
+              <p>我幫助客戶在香港、大灣區、清邁等地方，找到適合居住或投資的空間。除了地感與樓層，我也習慣留意採光、氣流、窗景與空間帶來的穩定感。結合風水、科技與音樂創作等背景，希望能用更完整的角度為你找到理想歸宿。</p>
             </div>
 
             <div data-lang="en">
               <p>Hello, I’m Ryan. As a Hong Kong real estate agent, I believe space deeply shapes how we live, work, and thrive.</p>
-              <p>I help clients find exceptional properties across Hong Kong, the Greater Bay Area, Chiang Mai, and beyond. Beyond floor plans, I pay close attention to natural light, airflow, and spatial energy.</p>
+              <p>I help clients find exceptional properties across Hong Kong, the Greater Bay Area, Chiang Mai, and beyond.</p>
             </div>
 
             <div data-lang="th">
               <p>สวัสดีครับ ผมชื่อ Ryan นายหน้าอสังหาริมทรัพย์จากฮ่องกงที่เชื่อว่า “พื้นที่ที่ดีส่งผลต่อคุณภาพชีวิต”</p>
-              <p>ผมช่วยลูกค้าหาพื้นที่ที่เหมาะทั้งสำหรับอยู่อาศัยและการลงทุน ในฮ่องกง เขตอ่าวกวางตุ้ง-ฮ่องกง-มาเก๊า เชียงใหม่</p>
             </div>
 
-            <div class="service-box">
-              <h3>
-                <span data-lang="zh">一站式服務（香港／九龍區）</span>
-                <span data-lang="en">One-Stop Services (HK / Kowloon)</span>
-                <span data-lang="th">บริการครบวงจร (ฮ่องกง / เกาลูน)</span>
-              </h3>
-              <ul>
-                <li data-lang="zh">清潔服務 ｜ 滅蟲服務 ｜ 家居翻新 ｜ 大小維修 ｜ 開鎖換鎖 ｜ 疑難排解</li>
-                <li data-lang="zh">7人專車接送（港／九／新界／大灣區）</li>
-                <li data-lang="en">Cleaning, Pest Control, Renovations, Repairs, Locksmith, Transfers</li>
-                <li data-lang="th">บริการทำความสะอาด, รีโนเวทบ้าน, ซ่อมแซม, รถส่วนตัว 7 ที่นั่ง</li>
-              </ul>
-              <div class="fine">
-                <span data-lang="zh">另設高端轉介：會所會籍買賣、遊艇買賣、馬匹買賣及保險（歡迎私訊查詢）。</span>
-                <span data-lang="en">Referrals for premium markets: Club memberships, yachts, horses & insurance.</span>
-                <span data-lang="th">บริการแนะนำสำหรับตลาดระดับพรีเมียม เช่น ซื้อขายสมาชิกคลับ เรือยอชต์ ม้า และประกันภัย</span>
+            <h3 style="margin-top:16px; font-size:14px; color:var(--accent);">
+              <span data-lang="zh">🛠️ 一站式服務（香港／九龍區）</span>
+              <span data-lang="en">🛠️ One-Stop Services</span>
+              <span data-lang="th">🛠️ บริการครบวงจร</span>
+            </h3>
+            <div class="service-grid">
+              <div class="service-card-mini"><span class="icon">🧹</span><span>清潔 &amp; 滅蟲服務</span></div>
+              <div class="service-card-mini"><span class="icon">🔨</span><span>家居翻新 &amp; 大小維修</span></div>
+              <div class="service-card-mini"><span class="icon">🔑</span><span>開鎖換鎖 &amp; 疑難排解</span></div>
+              <div class="service-card-mini"><span class="icon">🚘</span><span>7人專車接送（港九/大灣區）</span></div>
+            </div>
+            <p style="font-size:12px; color:var(--muted); margin-top:10px;">
+              <span data-lang="zh">另設高端轉介：會所會籍買賣、遊艇買賣、馬匹買賣及保險（歡迎私訊查詢）。</span>
+              <span data-lang="en">Referrals available: Club memberships, yachts, horse trading & insurance.</span>
+            </p>
+          </section>
+
+          <section id="gallery" class="card">
+            <h2>✨ 
+              <span data-lang="zh">空間美學 ｜ 氣氛與光影</span>
+              <span data-lang="en">Spatial Harmony & Atmosphere</span>
+              <span data-lang="th">บรรยากาศและพื้นที่</span>
+            </h2>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop" alt="採光與光影" />
+                <div class="gallery-caption">光影與流動感</div>
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=600&auto=format&fit=crop" alt="質感居所" />
+                <div class="gallery-caption">極簡質感居住空間</div>
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop" alt="景觀視野" />
+                <div class="gallery-caption">開揚視野與氣場</div>
               </div>
             </div>
           </section>
 
+          <section id="video" class="card">
+            <h2>🎬 
+              <span data-lang="zh">精選影片 ｜ YouTube 頻道</span>
+              <span data-lang="en">Featured Video</span>
+              <span data-lang="th">วิดีโอแนะนำ</span>
+            </h2>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=UUiamhereyourehere" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </section>
+
           <section id="links" class="card">
-            <h2>
+            <h2>🔗 
               <span data-lang="zh">我的連結</span>
               <span data-lang="en">My Links</span>
               <span data-lang="th">ลิงก์ของฉัน</span>
             </h2>
-
-            <div class="link-groups">
-              <div class="link-group">
-                <div class="link-group-head">
-                  <span class="link-group-title">YouTube &amp; Social</span>
-                  <span class="link-group-tag">Media</span>
+            <div class="link-group-grid cols-2">
+              <div class="link-card">
+                <div class="link-title-row">
+                  <div class="link-icon">▶</div>
+                  <div>
+                    <p class="name">YouTube 頻道一</p>
+                    <div class="url">@iamhereyourehere</div>
+                  </div>
                 </div>
-                <div class="link-group-grid cols-2">
-                  <div class="link-card">
-                    <div class="link-title-row">
-                      <div class="link-icon">▶</div>
-                      <div>
-                        <p class="name">YouTube 頻道一</p>
-                        <div class="url">@iamhereyourehere</div>
-                      </div>
-                    </div>
-                    <div class="actions">
-                      <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">進入</a>
-                      <button class="btn mini" type="button" onclick="copyText('https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq')">複製</button>
-                    </div>
-                  </div>
+                <div class="actions">
+                  <a class="btn mini primary" href="https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq" target="_blank" rel="noopener">進入</a>
+                  <button class="btn mini" type="button" onclick="copyText('https://youtube.com/@iamhereyourehere?si=qYThCPqdVxyvNLAq')">複製</button>
+                </div>
+              </div>
 
-                  <div class="link-card">
-                    <div class="link-title-row">
-                      <div class="link-icon">▶</div>
-                      <div>
-                        <p class="name">YouTube 第二頻道</p>
-                        <div class="url">@ryannc49</div>
-                      </div>
-                    </div>
-                    <div class="actions">
-                      <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">進入</a>
-                      <button class="btn mini" type="button" onclick="copyText('https://www.youtube.com/@ryannc49')">複製</button>
-                    </div>
+              <div class="link-card">
+                <div class="link-title-row">
+                  <div class="link-icon">▶</div>
+                  <div>
+                    <p class="name">YouTube 第二頻道</p>
+                    <div class="url">@ryannc49</div>
                   </div>
+                </div>
+                <div class="actions">
+                  <a class="btn mini primary" href="https://www.youtube.com/@ryannc49" target="_blank" rel="noopener">進入</a>
+                  <button class="btn mini" type="button" onclick="copyText('https://www.youtube.com/@ryannc49')">複製</button>
+                </div>
+              </div>
 
-                  <div class="link-card">
-                    <div class="link-title-row">
-                      <div class="link-icon">📷</div>
-                      <div>
-                        <p class="name">Instagram</p>
-                        <div class="url">@propertyarigatou</div>
-                      </div>
-                    </div>
-                    <div class="actions">
-                      <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou" target="_blank" rel="noopener">進入</a>
-                      <button class="btn mini" type="button" onclick="copyText('https://www.instagram.com/propertyarigatou')">複製</button>
-                    </div>
+              <div class="link-card">
+                <div class="link-title-row">
+                  <div class="link-icon">📷</div>
+                  <div>
+                    <p class="name">Instagram</p>
+                    <div class="url">@propertyarigatou</div>
                   </div>
+                </div>
+                <div class="actions">
+                  <a class="btn mini primary" href="https://www.instagram.com/propertyarigatou" target="_blank" rel="noopener">進入</a>
+                  <button class="btn mini" type="button" onclick="copyText('https://www.instagram.com/propertyarigatou')">複製</button>
+                </div>
+              </div>
 
-                  <div class="link-card">
-                    <div class="link-title-row">
-                      <div class="link-icon">🛍️</div>
-                      <div>
-                        <p class="name">Carousell</p>
-                        <div class="url">Carousell Profile</div>
-                      </div>
-                    </div>
-                    <div class="actions">
-                      <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">進入</a>
-                      <button class="btn mini" type="button" onclick="copyText('https://carousell.app.link/gy6fmRujm5b')">複製</button>
-                    </div>
+              <div class="link-card">
+                <div class="link-title-row">
+                  <div class="link-icon">🛍️</div>
+                  <div>
+                    <p class="name">Carousell</p>
+                    <div class="url">Carousell Profile</div>
                   </div>
+                </div>
+                <div class="actions">
+                  <a class="btn mini primary" href="https://carousell.app.link/gy6fmRujm5b" target="_blank" rel="noopener">進入</a>
+                  <button class="btn mini" type="button" onclick="copyText('https://carousell.app.link/gy6fmRujm5b')">複製</button>
                 </div>
               </div>
             </div>
           </section>
 
           <section id="ads" class="card">
-            <h2>
+            <h2>🏢 
               <span data-lang="zh">廣告連結（地產平台）</span>
               <span data-lang="en">Ad Links (Real Estate Platforms)</span>
               <span data-lang="th">ลิงก์แพลตฟอร์มอสังหาฯ</span>
@@ -407,7 +484,7 @@
           </section>
 
           <section id="monthly" class="card">
-            <h2>
+            <h2>📊 
               <span data-lang="zh">每月樓市成交（PDF）</span>
               <span data-lang="en">Monthly Transactions (PDF)</span>
               <span data-lang="th">สรุปยอดซื้อขายรายเดือน (PDF)</span>
@@ -438,7 +515,7 @@
           </section>
 
           <section id="contact" class="card">
-            <h2>
+            <h2>📬 
               <span data-lang="zh">聯絡方式</span>
               <span data-lang="en">Contact</span>
               <span data-lang="th">ช่องทางติดต่อ</span>
@@ -476,7 +553,7 @@
       });
     });
 
-    // 複製按鈕
+    // 複製功能
     function copyText(text) {
       navigator.clipboard.writeText(text).then(() => {
         alert('連結已成功複製到剪貼簿！');
